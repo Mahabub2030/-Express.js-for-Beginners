@@ -1,19 +1,35 @@
-import express, { Request, Response }  from "express";
+import express, { Request, Response } from "express"
+import fs from "fs"
+import path from "path";
 const app = express();
-const port = 3000;
 
-app.get("/", (req :Request, res:Response) => {
-  res.send("Hello World!");
+app.use(express.json())
+
+const filePath = path.join(__dirname,"../db/todo.json")
+
+
+app.get("/", (req: Request, res: Response) => {
+    // console.log()
+
+  res.send("welcom to todos app");
 });
-app.get("/todos", (req, res) => {
-  res.send("Hello World!");
+app.get("/todos", (req: Request, res: Response) => {
+    const data = fs.readFileSync(filePath,{encoding:"utf-8"})
+    
+//  console.log(data)
+
+  res.json(data);
 });
-app.put("/todos/creat/todos", (req, res) => {
+app.post("/todos/creat-todo", (req: Request, res: Response) => {
+    const {title,body }= req.body;
+    console.log(title,body)
   res.send("Hello World!");
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
 
 export default app;
+
+/**
+ * server --> server handiling like -stating ,closing 
+ * app file --> will be crud handling 
+ */
