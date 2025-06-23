@@ -31,5 +31,5 @@ export default app;
 
 /**
  * server --> server handiling like -stating ,closing 
- * app file --> will be crud handling 
+ * app file --> will be crud handling  
  */
