@@ -17,7 +17,7 @@ let server;
 const port = 8000;
 const boostrap = () => __awaiter(void 0, void 0, void 0, function* () {
     server = app_1.default.listen(port, () => {
-        console.log(`Example app listening on port ${port}`);
+        console.log(`From ToDo app listening on port ${port}`);
     });
 });
 boostrap();
