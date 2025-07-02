@@ -24,13 +24,14 @@ todosRouter.get("/", (req, res) => {
 todosRouter.post("/creat-todo", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const db = yield mongoDB_1.client.db("todosDB");
     const collection = yield db.collection("todos");
-    const todos = yield collection.insertOne({
+    yield collection.insertOne({
         title: "Mogodb",
         discription: "mogoDB",
         priority: "High",
         isCompleted: false,
     });
-    // const todos = collection.find({})
+    const cursor = collection.find({});
+    const todos = yield collection.toArray();
     res.json(todos);
     const { title, body } = req.body;
     console.log(title, body);
